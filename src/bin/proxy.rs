@@ -127,9 +127,7 @@ async fn main() {
     println!("   Use Ctrl+C to stop the server");
 
     // Run server
-    if let (Some(cert_path), Some(key_path)) =
-        (&config.tls_cert_path, &config.tls_key_path)
-    {
+    if let (Some(cert_path), Some(key_path)) = (&config.tls_cert_path, &config.tls_key_path) {
         warp::serve(routes)
             .tls()
             .cert_path(cert_path)
