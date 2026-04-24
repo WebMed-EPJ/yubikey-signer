@@ -29,10 +29,10 @@ pub fn parse_pe(data: &[u8]) -> SigningResult<PeInfo> {
 
     // Conservative validation: extremely small PE files are often malformed in tests
     // and not suitable for signing/analysis. Require at least 4 KiB.
-    if data.len() < 4096 {
+    if data.len() < 3072 {
         return Err(SigningError::PeParsingError(
             format!(
-                "Failed to parse PE file: appears too small to be valid for signing ({} bytes, minimum 4096 bytes)",
+                "Failed to parse PE file: appears too small to be valid for signing ({} bytes, minimum 3072 bytes)",
                 data.len()
             )
         ));
